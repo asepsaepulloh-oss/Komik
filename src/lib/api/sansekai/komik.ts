@@ -138,14 +138,20 @@ function mapChapterData(data: SansekaiChapterImageData, mangaTitle?: string): Ko
   };
 }
 
-function pickChapterImageData(payload: SansekaiChapterImageResponse): SansekaiChapterImageData | null {
-  if (Array.isArray(payload)) return payload[0] ?? null;
+function isSansekaiChapterImageData(value: unknown): value is SansekaiChapterImageData {
+  return !!value && typeof value === "object" && "chapter" in value;
+}
+
+function pickChapterImageData(
+  payload: SansekaiChapterImageResponse
+): SansekaiChapterImageData | null {
+  if (Array.isArray(payload)) return isSansekaiChapterImageData(payload[0]) ? payload[0] : null;
   if (payload && "data" in payload) {
     const data = payload.data;
-    if (Array.isArray(data)) return data[0] ?? null;
-    return data ?? null;
+    if (Array.isArray(data)) return isSansekaiChapterImageData(data[0]) ? data[0] : null;
+    return isSansekaiChapterImageData(data) ? data : null;
   }
-  return payload ?? null;
+  return isSansekaiChapterImageData(payload) ? payload : null;
 }
 
 // ─── Exported Fetch Functions ────────────────────────────────────────────────
