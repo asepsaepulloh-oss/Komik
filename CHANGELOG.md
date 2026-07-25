@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.38.1] - 2026-07-25
+
+### Bug Fixes
+- fix(sw): skip cross-origin requests in service worker fetch handler (c338ab7)
+
+
 ## [0.38.0] - 2026-07-25
 
 ### Features
