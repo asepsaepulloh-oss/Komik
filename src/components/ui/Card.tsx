@@ -1,6 +1,6 @@
 "use client";
 
-import { cn, getImageUrl, truncate } from "@/lib/utils";
+import { cn, FALLBACK_IMAGE_URL, getImageUrl, truncate } from "@/lib/utils";
 import type { Anime, Komik, KomikChapter, AnimeEpisode } from "@/types";
 import { BookOpen, Play, Star, ImageOff } from "lucide-react";
 import Image from "next/image";
@@ -70,9 +70,7 @@ export function Card({
     : (anime.episodes || anime.chapter || []).slice(0, 2);
 
   const href = isKomik ? `/komik/${id}` : `/anime/${id}`;
-  const imageUrl = imageError
-    ? "https://placehold.co/300x450/1a1a2e/ffffff?text=No+Image"
-    : getImageUrl(thumbnail);
+  const imageUrl = imageError ? FALLBACK_IMAGE_URL : getImageUrl(thumbnail);
 
   // Stagger delay via CSS custom property (capped at 0.5s)
   const animDelay = `${Math.min(index * 0.05, 0.5)}s`;

@@ -94,6 +94,8 @@ async function networkFirstWithFallback(request) {
 // Stale-while-revalidate for images
 async function staleWhileRevalidate(request) {
   const cached = await caches.match(request);
+  const fallbackResponse =
+    cached || new Response("", { status: 503, statusText: "Service Unavailable" });
 
   const fetchPromise = fetch(request)
     .then(async (response) => {
@@ -105,7 +107,7 @@ async function staleWhileRevalidate(request) {
       }
       return response;
     })
-    .catch(() => cached);
+    .catch(() => fallbackResponse);
 
-  return cached || fetchPromise;
+  return cached ?? fetchPromise;
 }

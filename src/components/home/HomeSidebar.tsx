@@ -1,6 +1,6 @@
 "use client";
 
-import { cn, getImageUrl, truncate } from "@/lib/utils";
+import { cn, FALLBACK_IMAGE_URL, getImageUrl, truncate } from "@/lib/utils";
 import type { Anime, Komik } from "@/types";
 import { Crown, Megaphone, Trophy, Star, TrendingUp } from "lucide-react";
 import Image from "next/image";
@@ -132,9 +132,7 @@ function RankingItemCard({ item, rank, isFirst = false }: RankingItemCardProps) 
   const rating = item.rating || anime.score;
 
   const href = isKomik ? `/komik/${id}` : `/anime/${id}`;
-  const imageUrl = imageError
-    ? "https://placehold.co/96x128/1e293b/94a3b8?text=No"
-    : getImageUrl(thumbnail);
+  const imageUrl = imageError ? FALLBACK_IMAGE_URL : getImageUrl(thumbnail);
 
   if (isFirst) {
     // Special styling for #1

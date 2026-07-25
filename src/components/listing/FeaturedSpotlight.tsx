@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { cn, getImageUrl, truncate } from "@/lib/utils";
+import { cn, FALLBACK_IMAGE_URL, getImageUrl, truncate } from "@/lib/utils";
 import type { Anime, Komik } from "@/types";
 import { Star, BookOpen, Play, ChevronRight, ImageOff } from "lucide-react";
 import Image from "next/image";
@@ -133,9 +133,7 @@ export function FeaturedSpotlight({
       <div className="absolute inset-0">
         {displayItems.map((item, idx) => {
           const itemProps = getItemProps(item, variant);
-          const imgUrl = imageError[idx]
-            ? "https://placehold.co/1200x600/1a1a2e/ffffff?text=No+Image"
-            : getImageUrl(itemProps.thumbnail);
+          const imgUrl = imageError[idx] ? FALLBACK_IMAGE_URL : getImageUrl(itemProps.thumbnail);
 
           return (
             <div
