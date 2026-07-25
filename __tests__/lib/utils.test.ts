@@ -108,15 +108,15 @@ describe("slugify", () => {
 
 describe("getImageUrl", () => {
   it("returns placeholder for empty url", () => {
-    expect(getImageUrl("")).toContain("placehold.co");
+    expect(getImageUrl("")).toBe("/images/no-image.svg");
   });
 
   it("returns placeholder for 'undefined' string", () => {
-    expect(getImageUrl("undefined")).toContain("placehold.co");
+    expect(getImageUrl("undefined")).toBe("/images/no-image.svg");
   });
 
   it("returns placeholder for 'null' string", () => {
-    expect(getImageUrl("null")).toContain("placehold.co");
+    expect(getImageUrl("null")).toBe("/images/no-image.svg");
   });
 
   it("returns http url as-is", () => {

@@ -1,6 +1,6 @@
 "use client";
 
-import { cn, getImageUrl, truncate } from "@/lib/utils";
+import { cn, FALLBACK_IMAGE_URL, getImageUrl, truncate } from "@/lib/utils";
 import type { Anime, Komik } from "@/types";
 import { Bookmark, ChevronLeft, ChevronRight, Play, Star, BookOpen } from "lucide-react";
 import Image from "next/image";
@@ -56,9 +56,7 @@ export function HeroCarousel({ items, className }: HeroCarouselProps) {
   const thumbnail = currentItem.cover || currentItem.thumbnail || anime.poster || "";
   const href = isKomik ? `/komik/${id}` : `/anime/${id}`;
 
-  const imageUrl = imageError[currentIndex]
-    ? "https://placehold.co/750x1000/1e293b/94a3b8?text=No+Image"
-    : getImageUrl(thumbnail);
+  const imageUrl = imageError[currentIndex] ? FALLBACK_IMAGE_URL : getImageUrl(thumbnail);
 
   return (
     <section

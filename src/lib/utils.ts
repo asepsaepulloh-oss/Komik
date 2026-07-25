@@ -46,10 +46,12 @@ const PROXIED_IMAGE_HOSTS = [
   "otakudesu.blog",
 ];
 
+export const FALLBACK_IMAGE_URL = "/images/no-image.svg";
+
 export function getImageUrl(url: string): string {
   // Handle different image URL formats from API
   if (!url || url === "undefined" || url === "null") {
-    return "https://placehold.co/300x450/1a1a2e/ffffff?text=No+Image";
+    return FALLBACK_IMAGE_URL;
   }
   if (url.startsWith("//")) url = `https:${url}`;
   if (url.startsWith("http")) {

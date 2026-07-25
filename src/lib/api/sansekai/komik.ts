@@ -80,6 +80,11 @@ interface SansekaiChapterImageData {
   next_chapter_number: number | null;
 }
 
+type SansekaiChapterImageResponse =
+  | { data?: SansekaiChapterImageData | SansekaiChapterImageData[] }
+  | SansekaiChapterImageData
+  | SansekaiChapterImageData[];
+
 // ─── Mapping Helpers ─────────────────────────────────────────────────────────
 
 const STATUS_MAP: Record<number, string> = { 1: "Ongoing", 2: "Hiatus", 3: "Completed" };
@@ -120,6 +125,7 @@ function mapChapterListItem(item: SansekaiChapterListItem): KomikChapter {
 }
 
 function mapChapterData(data: SansekaiChapterImageData, mangaTitle?: string): KomikChapterData {
+  const imageList = data.chapter?.data ?? [];
   return {
     mangaTitle: mangaTitle ?? "",
     mangaSlug: data.manga_id,
@@ -128,8 +134,24 @@ function mapChapterData(data: SansekaiChapterImageData, mangaTitle?: string): Ko
       previousChapter: data.prev_chapter_id,
       nextChapter: data.next_chapter_id,
     },
-    images: data.chapter.data.map((url, i) => ({ url, page: i + 1 })),
+    images: imageList.map((url, i) => ({ url, page: i + 1 })),
   };
+}
+
+function isSansekaiChapterImageData(value: unknown): value is SansekaiChapterImageData {
+  return !!value && typeof value === "object" && "chapter" in value;
+}
+
+function pickChapterImageData(
+  payload: SansekaiChapterImageResponse
+): SansekaiChapterImageData | null {
+  if (Array.isArray(payload)) return isSansekaiChapterImageData(payload[0]) ? payload[0] : null;
+  if (payload && "data" in payload) {
+    const data = payload.data;
+    if (Array.isArray(data)) return isSansekaiChapterImageData(data[0]) ? data[0] : null;
+    return isSansekaiChapterImageData(data) ? data : null;
+  }
+  return isSansekaiChapterImageData(payload) ? payload : null;
 }
 
 // ─── Exported Fetch Functions ────────────────────────────────────────────────
@@ -194,12 +216,13 @@ export async function fetchKomikChapterList(mangaId: string): Promise<KomikChapt
 }
 
 export async function fetchKomikChapterData(chapterId: string): Promise<KomikChapterData | null> {
-  const res = await fetchSansekai<{ data: SansekaiChapterImageData }>(
+  const res = await fetchSansekai<SansekaiChapterImageResponse>(
     `/komik/getimage?chapter_id=${encodeURIComponent(chapterId)}`,
     CACHE_TIMES.IMAGES
   );
-  if (!res?.data?.chapter?.data?.length) return null;
-  return mapChapterData(res.data);
+  const chapterData = pickChapterImageData(res);
+  if (!chapterData?.chapter?.data?.length) return null;
+  return mapChapterData(chapterData);
 }
 
 export async function fetchKomikImages(chapterId: string): Promise<KomikImage[]> {
