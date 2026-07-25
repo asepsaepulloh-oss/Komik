@@ -30,7 +30,7 @@ interface SectionHeaderProps {
 
 function SectionHeader({ title, icon, href, linkText = "List Semua" }: SectionHeaderProps) {
   return (
-    <div className="mb-4 flex items-center justify-between">
+    <div className="mb-4 flex items-center justify-between gap-3">
       <div className="flex items-center gap-2">
         {icon}
         <h3 className="text-foreground text-lg font-bold md:text-xl">{title}</h3>
@@ -38,7 +38,7 @@ function SectionHeader({ title, icon, href, linkText = "List Semua" }: SectionHe
       {href && (
         <Link
           href={href}
-          className="bg-primary/10 text-primary hover:bg-primary/20 flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors"
+          className="flex items-center gap-1 rounded-full bg-emerald-500/15 px-3 py-1.5 text-xs font-medium text-emerald-300 transition-colors hover:bg-emerald-500/25"
         >
           {linkText}
           <ArrowRight className="h-3 w-3" />
@@ -68,7 +68,7 @@ function SectionWrapper({
   children,
 }: SectionWrapperProps) {
   return (
-    <section className="py-8 md:py-12">
+    <section className="py-7 md:py-10">
       <div className="container mx-auto px-4">
         <div className="mb-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -80,7 +80,7 @@ function SectionWrapper({
           </div>
           <Link
             href={href}
-            className="text-primary group flex items-center gap-1 text-sm hover:underline"
+            className="group flex items-center gap-1 text-sm text-emerald-300 hover:underline"
           >
             {linkText}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -103,15 +103,15 @@ interface EmptyStateProps {
 
 function EmptyState({ icon, message, href, linkText }: EmptyStateProps) {
   return (
-    <div className="border-border/50 bg-card/30 flex flex-col items-center justify-center rounded-2xl border border-dashed py-16 text-center">
-      <div className="bg-muted mb-4 flex h-14 w-14 items-center justify-center rounded-full">
+    <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-emerald-800/50 bg-emerald-950/20 py-16 text-center">
+      <div className="bg-emerald-900/60 mb-4 flex h-14 w-14 items-center justify-center rounded-full">
         {icon}
       </div>
       <p className="text-muted-foreground mb-1 text-sm font-medium">Konten belum tersedia</p>
       <p className="text-muted-foreground/70 mb-5 max-w-xs text-xs">{message}</p>
       <Link
         href={href}
-        className="text-primary group flex items-center gap-1.5 text-sm font-medium hover:underline"
+        className="group flex items-center gap-1.5 text-sm font-medium text-emerald-300 hover:underline"
       >
         {linkText}
         <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
@@ -155,7 +155,7 @@ export function UpdateTerbaruSection({
   }
 
   return (
-    <section className="py-6">
+    <section className="rounded-2xl border border-emerald-900/30 bg-emerald-950/10 p-4 py-6 md:p-6">
       {/* Section Header */}
       <SectionHeader
         title="Update Terbaru"
@@ -244,10 +244,7 @@ export function OngoingSection({ title, items, type, href, isLoading }: OngoingS
     <section className="py-6">
       <SectionHeader title={title} icon={icon} href={href} />
 
-      <div
-        className="scrollbar-hide flex gap-3 overflow-x-auto pb-2 sm:gap-4"
-        style={{ scrollbarWidth: "none" }}
-      >
+      <div className="scrollbar-hide flex gap-3 overflow-x-auto pb-2 sm:gap-4" style={{ scrollbarWidth: "none" }}>
         {finalItems.slice(0, 12).map((item, index) => (
           <div
             key={type === "komik" ? (item as Komik).manga_id : (item as Anime).urlId}

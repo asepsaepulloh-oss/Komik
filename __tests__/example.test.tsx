@@ -1,5 +1,5 @@
 /**
- * Example test file demonstrating testing patterns for KuroManga
+ * Example test file demonstrating testing patterns for LouiManga
  */
 
 import { render, screen } from "@testing-library/react";
@@ -9,7 +9,7 @@ function ExampleComponent({ title }: { title: string }) {
   return (
     <div>
       <h1>{title}</h1>
-      <p>Welcome to KuroManga</p>
+      <p>Welcome to LouiManga</p>
     </div>
   );
 }
@@ -24,7 +24,7 @@ describe("ExampleComponent", () => {
   it("renders welcome message", () => {
     render(<ExampleComponent title="Test" />);
 
-    expect(screen.getByText("Welcome to KuroManga")).toBeInTheDocument();
+    expect(screen.getByText("Welcome to LouiManga")).toBeInTheDocument();
   });
 });
 

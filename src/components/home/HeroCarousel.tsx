@@ -63,14 +63,14 @@ export function HeroCarousel({ items, className }: HeroCarouselProps) {
   return (
     <section
       className={cn(
-        "relative overflow-hidden bg-gradient-to-b from-[#0f172a] to-[#1e293b]",
+        "relative overflow-hidden border-b border-emerald-900/40 bg-gradient-to-b from-emerald-950 via-emerald-900/80 to-emerald-950",
         className
       )}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {/* Background blur effect from cover image */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-25">
         <Image src={imageUrl} alt="" fill className="object-cover blur-3xl" unoptimized />
       </div>
 
@@ -80,18 +80,18 @@ export function HeroCarousel({ items, className }: HeroCarouselProps) {
           <div className="order-2 flex flex-col justify-center lg:order-1">
             {/* Recommendation Badge */}
             <div className="mb-4 flex items-center gap-3">
-              <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/20 px-3 py-1 text-xs font-semibold tracking-wide text-amber-400 uppercase">
-                <span className="text-amber-300">RECOMMENDATION</span>
+              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold tracking-wide text-emerald-300 uppercase">
+                <span className="text-emerald-200">WEBTOON PICKS</span>
                 <span className="text-white">#</span>
                 <span className="text-lg font-bold text-white">{currentIndex + 1}</span>
               </span>
 
               {/* Rating Badge */}
               {rating && rating !== "N/A" && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-yellow-500/20 px-3 py-1 text-sm font-semibold text-yellow-400">
-                  <Star className="h-4 w-4 fill-yellow-400" />
+                <span className="inline-flex items-center gap-1 rounded-full bg-lime-500/20 px-3 py-1 text-sm font-semibold text-lime-300">
+                  <Star className="h-4 w-4 fill-lime-300" />
                   {rating}
-                  <span className="ml-0.5 text-xs text-yellow-300/80">Rating</span>
+                  <span className="ml-0.5 text-xs text-lime-200/80">Rating</span>
                 </span>
               )}
             </div>
@@ -110,7 +110,7 @@ export function HeroCarousel({ items, className }: HeroCarouselProps) {
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 href={href}
-                className="bg-primary hover:bg-primary/90 shadow-primary/25 inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:scale-105"
+                className="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-emerald-950 shadow-lg shadow-emerald-500/25 transition-all hover:scale-105 hover:bg-emerald-400"
               >
                 {isKomik ? (
                   <BookOpen className="h-4 w-4" />
@@ -121,7 +121,7 @@ export function HeroCarousel({ items, className }: HeroCarouselProps) {
               </Link>
               <button
                 type="button"
-                className="inline-flex items-center gap-2 rounded-lg border border-slate-600/50 bg-slate-700/50 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-slate-600/50"
+                className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-950/40 px-6 py-3 text-sm font-semibold text-emerald-100 transition-all hover:bg-emerald-900/60"
               >
                 <Bookmark className="h-4 w-4" />
                 Simpan
@@ -137,9 +137,7 @@ export function HeroCarousel({ items, className }: HeroCarouselProps) {
                   onClick={() => setCurrentIndex(idx)}
                   className={cn(
                     "h-1.5 rounded-full transition-all duration-300",
-                    idx === currentIndex
-                      ? "bg-primary w-8"
-                      : "w-1.5 bg-slate-500 hover:bg-slate-400"
+                    idx === currentIndex ? "w-8 bg-emerald-400" : "w-1.5 bg-emerald-200/40 hover:bg-emerald-200/70"
                   )}
                   aria-label={`Go to slide ${idx + 1}`}
                 />
@@ -149,7 +147,7 @@ export function HeroCarousel({ items, className }: HeroCarouselProps) {
 
           {/* Right Cover Image */}
           <div className="relative order-1 lg:order-2">
-            <div className="relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-2xl shadow-2xl shadow-black/50 lg:max-w-md">
+            <div className="relative mx-auto aspect-[3/4] w-full max-w-xs overflow-hidden rounded-2xl border border-emerald-400/25 shadow-2xl shadow-black/50 sm:max-w-sm lg:max-w-md">
               <Image
                 src={imageUrl}
                 alt={title}
@@ -193,7 +191,7 @@ export function HeroCarousel({ items, className }: HeroCarouselProps) {
                 <button
                   type="button"
                   onClick={goToPrev}
-                  className="absolute top-1/2 left-0 flex h-10 w-10 -translate-x-2 -translate-y-1/2 items-center justify-center rounded-full bg-slate-800/80 text-white shadow-lg transition-all hover:scale-110 hover:bg-slate-700 lg:-translate-x-4"
+                  className="absolute top-1/2 left-0 flex h-10 w-10 -translate-x-2 -translate-y-1/2 items-center justify-center rounded-full bg-emerald-900/80 text-white shadow-lg transition-all hover:scale-110 hover:bg-emerald-800 lg:-translate-x-4"
                   aria-label="Previous slide"
                 >
                   <ChevronLeft className="h-5 w-5" />
@@ -201,7 +199,7 @@ export function HeroCarousel({ items, className }: HeroCarouselProps) {
                 <button
                   type="button"
                   onClick={goToNext}
-                  className="absolute top-1/2 right-0 flex h-10 w-10 translate-x-2 -translate-y-1/2 items-center justify-center rounded-full bg-slate-800/80 text-white shadow-lg transition-all hover:scale-110 hover:bg-slate-700 lg:translate-x-4"
+                  className="absolute top-1/2 right-0 flex h-10 w-10 translate-x-2 -translate-y-1/2 items-center justify-center rounded-full bg-emerald-900/80 text-white shadow-lg transition-all hover:scale-110 hover:bg-emerald-800 lg:translate-x-4"
                   aria-label="Next slide"
                 >
                   <ChevronRight className="h-5 w-5" />

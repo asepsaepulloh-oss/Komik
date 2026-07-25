@@ -64,12 +64,12 @@ export function HomePageContent() {
     isAnimeRecommendedLoading;
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-gradient-to-b from-emerald-950/20 via-background to-background">
       {/* Hero Carousel */}
       <HeroCarousel items={featuredItems} />
 
       {/* Main Content Area with Sidebar */}
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-6 md:py-8">
         <div className="flex flex-col gap-8 lg:flex-row">
           {/* Main Content */}
           <main className="min-w-0 flex-1">
@@ -109,7 +109,7 @@ export function HomePageContent() {
           </main>
 
           {/* Sidebar - Hidden on mobile, vertical on lg+ */}
-          <aside className="hidden lg:block lg:w-64 lg:shrink-0">
+          <aside className="hidden lg:block lg:w-72 lg:shrink-0">
             <div className="sticky top-24">
               <HomeSidebar rankingItems={rankingItems} />
             </div>

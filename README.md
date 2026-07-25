@@ -1,4 +1,4 @@
-# 📚 KuroManga
+# 📚 LouiManga
 
 Website untuk membaca komik (manhwa, manhua, manga) dan streaming anime dengan subtitle Indonesia.
 
@@ -112,7 +112,7 @@ docker-compose -f docker-compose.dev.yml up
 docker-compose up -d
 
 # Build image only
-docker build -t KuroManga .
+docker build -t LouiManga .
 ```
 
 ---
@@ -292,7 +292,7 @@ docker run -p 3000:3000 \
   -e DATABASE_URL="..." \
   -e NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="..." \
   -e CLERK_SECRET_KEY="..." \
-  KuroManga
+  LouiManga
 ```
 
 ### Manual
@@ -308,7 +308,7 @@ npm start
 
 ### Production Architecture
 
-KuroManga uses a **dual-environment architecture** for optimal performance and reliability:
+LouiManga uses a **dual-environment architecture** for optimal performance and reliability:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐

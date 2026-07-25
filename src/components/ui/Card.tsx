@@ -83,7 +83,7 @@ export function Card({
       <Link
         href={href}
         className={cn(
-          "group flex gap-3 rounded-lg p-2 transition-colors hover:bg-slate-800/50",
+          "group flex gap-3 rounded-xl border border-emerald-900/40 bg-emerald-950/30 p-2 transition-colors hover:bg-emerald-900/40",
           className
         )}
       >
@@ -105,15 +105,15 @@ export function Card({
           )}
           {rating && (
             <div className="absolute top-0.5 right-0.5">
-              <span className="flex items-center gap-0.5 rounded bg-black/70 px-1 py-0.5 text-[10px] font-medium text-yellow-400">
-                <Star className="h-2.5 w-2.5 fill-yellow-400" />
+              <span className="flex items-center gap-0.5 rounded bg-emerald-950/85 px-1 py-0.5 text-[10px] font-medium text-lime-300">
+                <Star className="h-2.5 w-2.5 fill-lime-300" />
                 {rating}
               </span>
             </div>
           )}
         </div>
         <div className="flex min-w-0 flex-1 flex-col justify-center">
-          <h3 className="group-hover:text-primary line-clamp-1 text-sm font-medium text-white transition-colors">
+          <h3 className="line-clamp-1 text-sm font-medium text-white transition-colors group-hover:text-emerald-300">
             {truncate(title, 30)}
           </h3>
           {status && (
@@ -158,9 +158,8 @@ export function Card({
       <Link
         href={href}
         className={cn(
-          "group relative flex flex-col overflow-hidden rounded-xl",
-          "bg-card/80 border-border/50 border backdrop-blur-sm transition-all duration-300",
-          "hover:border-primary/50 hover:shadow-primary/20 hover:shadow-2xl",
+          "group relative flex flex-col overflow-hidden rounded-2xl border border-emerald-900/40 bg-emerald-950/30 backdrop-blur-sm transition-all duration-300",
+          "hover:border-emerald-400/50 hover:shadow-2xl hover:shadow-emerald-950/50",
           className
         )}
       >
@@ -200,7 +199,7 @@ export function Card({
           {/* Type badge */}
           {itemType && (
             <div className="absolute top-2 left-2">
-              <span className="bg-primary/90 text-primary-foreground rounded px-2 py-0.5 text-xs font-medium capitalize">
+              <span className="rounded-full bg-emerald-500/90 px-2.5 py-0.5 text-xs font-medium text-emerald-950 capitalize">
                 {itemType}
               </span>
             </div>
@@ -209,8 +208,8 @@ export function Card({
           {/* Rating badge */}
           {rating && (
             <div className="absolute top-2 right-2">
-              <span className="flex items-center gap-1 rounded bg-black/70 px-2 py-0.5 text-xs font-medium text-yellow-400">
-                <Star className="h-3 w-3 fill-yellow-400" />
+              <span className="flex items-center gap-1 rounded-full bg-emerald-950/85 px-2 py-0.5 text-xs font-medium text-lime-300">
+                <Star className="h-3 w-3 fill-lime-300" />
                 {rating}
               </span>
             </div>
@@ -218,8 +217,8 @@ export function Card({
         </div>
 
         {/* Content */}
-        <div className="flex flex-1 flex-col gap-1 p-3">
-          <h3 className="group-hover:text-primary line-clamp-2 text-sm leading-tight font-medium transition-colors">
+        <div className="flex flex-1 flex-col gap-1 p-3 sm:p-3.5">
+          <h3 className="line-clamp-2 text-sm leading-tight font-medium transition-colors group-hover:text-emerald-300">
             {truncate(title, 50)}
           </h3>
 
@@ -231,7 +230,7 @@ export function Card({
               <span
                 className={cn(
                   "font-medium",
-                  status.toLowerCase().includes("ongoing") ? "text-green-500" : "text-blue-500"
+                  status.toLowerCase().includes("ongoing") ? "text-emerald-400" : "text-cyan-300"
                 )}
               >
                 {status}
@@ -249,7 +248,7 @@ export function Card({
                 const date = ch.date;
                 return (
                   <div key={idx} className="flex items-center justify-between text-xs">
-                    <span className="text-primary cursor-pointer font-medium hover:underline">
+                    <span className="cursor-pointer font-medium text-emerald-300 hover:underline">
                       {isKomik ? "Ch." : "Ep."} {chapterNum}
                     </span>
                     {date && <span className="text-muted-foreground">{formatDate(date)}</span>}

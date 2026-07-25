@@ -1,7 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
 /**
- * Playwright configuration for KuroManga E2E tests
+ * Playwright configuration for LouiManga E2E tests
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
