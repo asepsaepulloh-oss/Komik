@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.38.0] - 2026-07-25
+
+### Features
+- feat: rebrand to LouiManga with webtoon-inspired UI refresh (809508e)
+
+### Other Changes
+- first commit (86bcbc1)
+
+
 ## [0.37.2] - 2026-04-11
 
 ### Bug Fixes
