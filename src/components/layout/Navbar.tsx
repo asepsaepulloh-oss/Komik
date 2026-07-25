@@ -32,15 +32,15 @@ export function Navbar({ clerkEnabled = false }: NavbarProps) {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full border-b border-slate-700/50 bg-slate-900/95 shadow-lg shadow-black/20 backdrop-blur-xl supports-[backdrop-filter]:bg-slate-900/80">
+      <header className="sticky top-0 z-50 w-full border-b border-emerald-900/40 bg-emerald-950/95 shadow-lg shadow-black/25 backdrop-blur-xl supports-[backdrop-filter]:bg-emerald-950/80">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg shadow-blue-500/25">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 shadow-lg shadow-emerald-500/30">
               <Book className="h-5 w-5 text-white" />
             </div>
             <span className="text-xl font-bold">
-              <span className="text-blue-400">{siteConfig.logoParts[0]}</span>
+              <span className="text-emerald-400">{siteConfig.logoParts[0]}</span>
               <span className="text-white">{siteConfig.logoParts[1]}</span>
             </span>
           </Link>
@@ -57,8 +57,8 @@ export function Navbar({ clerkEnabled = false }: NavbarProps) {
                   className={cn(
                     "flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                     isActive
-                      ? "bg-blue-500/10 text-blue-400"
-                      : "text-slate-400 hover:bg-slate-800 hover:text-white"
+                      ? "bg-emerald-500/15 text-emerald-300"
+                      : "text-emerald-100/70 hover:bg-emerald-900/60 hover:text-white"
                   )}
                 >
                   <item.icon className="h-4 w-4" />

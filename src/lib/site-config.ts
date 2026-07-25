@@ -4,18 +4,18 @@
 
 export const siteConfig = {
   /** Brand name */
-  name: "KuroManga",
+  name: "LouiManga",
   /** Shortened name for PWA / mobile */
-  shortName: "KuroManga",
+  shortName: "LouiManga",
   /** Logo text split: [highlighted, rest] */
-  logoParts: ["Kuro", "Manga"] as const,
+  logoParts: ["Loui", "Manga"] as const,
   /** Full tagline */
   tagline: "Baca Komik & Nonton Anime Sub Indo Gratis",
   /** Short description for meta */
   description:
-    "Baca komik manga, manhwa, manhua subtitle Indonesia gratis. Nonton anime sub Indo terlengkap dengan update terbaru setiap hari di KuroManga.",
+    "Baca komik manga, manhwa, manhua subtitle Indonesia gratis. Nonton anime sub Indo terlengkap dengan update terbaru setiap hari di LouiManga.",
   /** Canonical base URL (no trailing slash) */
-  url: "https://kuromanga.me",
+  url: "https://louimanga.me",
   /** OG image path (relative to public/) */
   ogImage: "/og-image.png",
   /** Locale */
@@ -23,7 +23,7 @@ export const siteConfig = {
   /** Language */
   lang: "id",
   /** Author / publisher / creator */
-  author: "KuroManga",
+  author: "LouiManga",
   /** Team credit */
   team: {
     name: "XenZee Team",
@@ -39,16 +39,16 @@ export const siteConfig = {
     "nonton anime",
     "anime sub indo",
     "streaming anime",
-    "kuromanga",
-    "kuro manga",
+    "louimanga",
+    "loui manga",
     "baca manga gratis",
     "komik manga online",
   ],
   /** Social / external links */
   links: {
     github: "https://github.com/KanekiCraynet/komikstream",
-    telegram: "https://t.me/kuromangame",
-    instagram: "https://instagram.com/kuromanga.me",
+    telegram: "https://t.me/louimangame",
+    instagram: "https://instagram.com/louimanga.me",
   },
 } as const;
 

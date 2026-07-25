@@ -155,7 +155,7 @@ export const useAppStore = create<AppState>()(
       replaceHistory: (history) => set({ history }),
     }),
     {
-      name: "KuroManga-storage",
+      name: "LouiManga-storage",
       partialize: (state) => ({
         bookmarks: state.bookmarks,
         history: state.history,
