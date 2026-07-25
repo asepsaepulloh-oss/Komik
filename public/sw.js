@@ -30,7 +30,9 @@ self.addEventListener("fetch", (event) => {
   // Skip API routes, auth routes, and external origins
   if (url.pathname.startsWith("/api/")) return;
   if (url.pathname.startsWith("/sign-in") || url.pathname.startsWith("/sign-up")) return;
-  if (url.origin !== self.location.origin && request.destination !== "image") return;
+  // Let browser handle cross-origin requests directly.
+  // Service worker fetch() for external images can be blocked by connect-src CSP.
+  if (url.origin !== self.location.origin) return;
 
   // Images: stale-while-revalidate (manga covers from CDN are mostly immutable)
   if (request.destination === "image") {
